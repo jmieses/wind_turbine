@@ -10,11 +10,14 @@ class Read
 private:
 	std::ifstream readFile;
 	std::string file;
-	std::vector<double> data1, data2;
-	std::vector < std::string> date_time;
+
+protected:
+
+
 
 public:
-
+	std::vector<double> data1, data2;
+	std::vector < std::string> date_time;
 
 	Read();
 	Read(std::string file);
@@ -29,6 +32,8 @@ public:
 	const std::vector<double>& getData2() const;
 	const std::vector<std::string>& getDateTime() const;
 	const int getStringIndex(std::string,std::string) const;
+
+	
 
 	~Read();
 };
