@@ -21,7 +21,7 @@ public:
 
 	Read();
 	Read(std::string file);
-	Read(const Read&);
+	//Read(const Read&);
 
 	std::vector<std::string> * ReadStoreDateTimeData();
 
@@ -33,8 +33,15 @@ public:
 	const std::vector<std::string>& getDateTime() const;
 	const int getStringIndex(std::string,std::string) const;
 
-	
+	/*Rule of three implementation: copy constructor, overloaded assignment operator, destructor*/
 
+	// copy constructor
+	Read(const Read&);
+
+	// overloaded assignment operator
+	Read& operator=(const Read);
+
+	// destructor
 	~Read();
 };
 

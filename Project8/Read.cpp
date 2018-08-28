@@ -13,12 +13,12 @@ Read::Read(std::string new_file){
 	}
 }
 
-Read::Read(const Read& new_read){
-	file = new_read.file;
-	data1 = new_read.data1;
-	data2 = new_read.data2;
-	date_time = new_read.date_time;
-}
+//Read::Read(const Read& new_read){
+//	file = new_read.file;
+//	data1 = new_read.data1;
+//	data2 = new_read.data2;
+//	date_time = new_read.date_time;
+//}
 
 void Read::ReadStoreData(){
 	// check that file is opened
@@ -89,6 +89,29 @@ const std::vector<std::string>& Read::getDateTime() const{
 	 }
 	 return i;
 }
+
+ // Rule of three definition
+
+	 // copy constructor
+ Read::Read(const Read& r){
+	 std::copy(r.file.begin(), r.file.end(), this->file.begin());
+	 std::copy(r.data1.begin(), r.data1.end(), this->data1.begin());
+	 std::copy(r.data2.begin(), r.data2.end(), this->data2.begin());
+	 std::copy(r.date_time.begin(), r.date_time.end(), this->date_time.begin());
+ }
+
+	// overloaded assignment operator
+ Read& Read::operator=(const Read r){
+	 if (this == &r){
+		 return *this;
+	 }
+	 std::copy(r.file.begin(), r.file.end(), this->file.begin());
+	 std::copy(r.data1.begin(), r.data1.end(), this->data1.begin());
+	 std::copy(r.data2.begin(), r.data2.end(), this->data2.begin());
+	 std::copy(r.date_time.begin(), r.date_time.end(), this->date_time.begin());
+
+	 return *this;
+ }
 
 Read::~Read()
 {
