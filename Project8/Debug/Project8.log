@@ -1,8 +1,10 @@
-﻿Build started 8/28/2018 6:43:00 PM.
+﻿Build started 8/28/2018 10:41:29 PM.
      1>Project "C:\Users\cesar\repos\wind_turbine\Project8\Project8.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Read.cpp WindSpeed.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Read.cpp Source.cpp Turbine.cpp WindSpeed.cpp
          WindSpeed.cpp
+         Turbine.cpp
+         Source.cpp
          Read.cpp
      1>c:\users\cesar\repos\wind_turbine\project8\read.cpp(88): warning C4018: '>' : signed/unsigned mismatch
          Generating Code...
@@ -16,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.02
+Time Elapsed 00:00:02.36

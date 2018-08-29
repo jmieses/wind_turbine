@@ -102,7 +102,9 @@ const std::vector<std::string>& Read::getDateTime() const{
 
 	// overloaded assignment operator
  Read& Read::operator=(const Read r){
-	 if (this == &r){
+	 // check if the two objects have the same data. 
+	 // if same data return this object.
+	 if (this == &r){ 
 		 return *this;
 	 }
 	 std::copy(r.file.begin(), r.file.end(), this->file.begin());
