@@ -1,14 +1,17 @@
 #pragma once
 #include "Read.h"
+#define AIR_DENSITY 1.225
 
 class WindSpeed : public Read
 {
+private:
 	double density;
 	double average_wind_speed;
-	
+
 public:
 
 	Read* read; // avoid error c2280
+
 	WindSpeed();
 	WindSpeed(double, double);
 	WindSpeed(const double&, Read&);
@@ -16,10 +19,10 @@ public:
 	void setWindSpeed(double);
 	double getDensity() const;
 	double getWindSpeed() const;
-	void averageWind(int, int);
+	void averageWind(std::string, std::string);
 
-	/*Used the rule of three to avoid using a deleted dafault function. Implement the following: 
-	copy constructor, overloaded assignment operator, and destructor. Once these are implemented 
+	/*Used the rule of three to avoid using a deleted dafault function. Implement the following:
+	copy constructor, overloaded assignment operator, and destructor. Once these are implemented
 	dafault member functions won't be created.*/
 
 	// copy constructor

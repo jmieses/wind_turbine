@@ -66,6 +66,10 @@ void Read::ReadPrintData(){
 	}
 }
 
+const std::string Read::getFileName() const{
+	return file;
+}
+
 const std::vector<double>& Read::getData1() const{
 	return data1;
 }
@@ -78,42 +82,57 @@ const std::vector<std::string>& Read::getDateTime() const{
 	return date_time;
 }
 
- const int Read::getStringIndex(std::string date, std::string time) const {
+const int Read::getStringIndex(std::string date, std::string time) const {
 	// get the index that represent the date and time 
 	/*std::vector<std::string>::const_iterator date_it = std::find(date_time.cbegin(), date_time.cend(), date + ',' + time);
 	return std::distance(date_time.cbegin(), date_it);*/
-	 int i = 0;
-	 while (('\n' + date + ',' + time) != date_time.at(i)){
-		 i++;
-		 if (i > date_time.size()) break;
-	 }
-	 return i;
+	int i = 0;
+	while (('\n' + date + ',' + time) != date_time.at(i)){
+		i++;
+		if (i > date_time.size()) break;
+	}
+	return i;
 }
 
- // Rule of three definition
+// Rule of three definition
 
-	 // copy constructor
- Read::Read(const Read& r){
-	 std::copy(r.file.begin(), r.file.end(), this->file.begin());
-	 std::copy(r.data1.begin(), r.data1.end(), this->data1.begin());
-	 std::copy(r.data2.begin(), r.data2.end(), this->data2.begin());
-	 std::copy(r.date_time.begin(), r.date_time.end(), this->date_time.begin());
- }
+// copy constructor
+Read::Read(const Read& r){
 
-	// overloaded assignment operator
- Read& Read::operator=(const Read r){
-	 // check if the two objects have the same data. 
-	 // if same data return this object.
-	 if (this == &r){ 
-		 return *this;
-	 }
-	 std::copy(r.file.begin(), r.file.end(), this->file.begin());
-	 std::copy(r.data1.begin(), r.data1.end(), this->data1.begin());
-	 std::copy(r.data2.begin(), r.data2.end(), this->data2.begin());
-	 std::copy(r.date_time.begin(), r.date_time.end(), this->date_time.begin());
+	// resize the vector containers data1, data2, date_time
+	// so the iterator does not go out  of range
+	if (!this->data1.empty()){
 
-	 return *this;
- }
+		size_t n = r.data1.size();
+		this->data1.resize(n);
+		this->data2.resize(n);
+		this->date_time.resize(n);
+	}
+
+	std::cout << "Read Copy constructor called " << std::endl;
+	if (!this->data1.empty()){
+		std::copy(r.file.begin(), r.file.end() - 1, this->file.begin());
+		std::copy(r.data1.begin(), r.data1.end() - 1, this->data1.begin());
+		std::copy(r.data2.begin(), r.data2.end() - 1, this->data2.begin());
+		std::copy(r.date_time.begin(), r.date_time.end() - 1, this->date_time.begin());
+	}
+	system("pause");
+}
+
+// overloaded assignment operator
+Read& Read::operator=(const Read r){
+	// check if the two objects have the same data. 
+	// if same data return this object.
+	if (this == &r){
+		return *this;
+	}
+	std::copy(r.file.begin(), r.file.end(), this->file.begin());
+	std::copy(r.data1.begin(), r.data1.end(), this->data1.begin());
+	std::copy(r.data2.begin(), r.data2.end(), this->data2.begin());
+	std::copy(r.date_time.begin(), r.date_time.end(), this->date_time.begin());
+
+	return *this;
+}
 
 Read::~Read()
 {

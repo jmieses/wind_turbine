@@ -9,15 +9,16 @@ class Read
 {
 private:
 	std::ifstream readFile;
-	std::string file;
+
 
 protected:
 
-
+	std::vector<double> data1, data2;
+	std::vector<std::string> date_time;
+	std::string file;
 
 public:
-	std::vector<double> data1, data2;
-	std::vector < std::string> date_time;
+
 
 	Read();
 	Read(std::string file);
@@ -28,10 +29,11 @@ public:
 	void ReadStoreData();
 	void ReadPrintData();
 
+	const std::string getFileName() const;
 	const std::vector<double>& getData1() const;
 	const std::vector<double>& getData2() const;
 	const std::vector<std::string>& getDateTime() const;
-	const int getStringIndex(std::string,std::string) const;
+	const int getStringIndex(std::string, std::string) const;
 
 	/*Rule of three implementation: copy constructor, overloaded assignment operator, destructor*/
 

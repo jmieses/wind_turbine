@@ -9,16 +9,17 @@ class Turbine : public WindSpeed
 private:
 	double rotor_radius;
 	double power_coefficient;
-	WindSpeed* wind_properties; // avoid error c2280
+
 public:
+	WindSpeed* wind; // avoid error c2280
+
 	Turbine();
-	Turbine(double);
+	Turbine(double, double);
 	Turbine(double, double, WindSpeed&);
-	Turbine(double, double, double, double);
 	void setRotorRadius(double);
 	void setWindProperties(WindSpeed);
-	double getRotorRadius() const;
-	double TurbinePower();
+	const double getRotorRadius() const;
+	const double TurbinePower() const;
 
 	WindSpeed getWindProperties();
 	~Turbine();
